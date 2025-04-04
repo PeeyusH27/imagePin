@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-// import { UserData } from "./context/UserContext";
+import { UserData } from "./context/userContext";
 import { Loading } from "./components/Loading";
 import Navbar from "./components/Navbar";
 import PinPage from "./pages/PinPage";
@@ -17,7 +17,7 @@ const App = () => {
       {loading ? (
         <Loading />
       ) : (
-        <Router>
+        <BrowserRouter>
           {isAuth && <Navbar user={user} />}
           <Routes>
             <Route path="/" element={isAuth ? <Home /> : <Login />} />
@@ -40,7 +40,7 @@ const App = () => {
               element={isAuth ? <Home /> : <Register />}
             />
           </Routes>
-        </Router>
+        </BrowserRouter>
       )}
     </>
   );
